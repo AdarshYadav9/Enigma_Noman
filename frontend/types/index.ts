@@ -26,3 +26,15 @@ export interface Dish {
   sodium_mg: number;
   carbs_g: number;
 }
+
+export interface MenuDish {
+  name: string;
+  risk_level: RiskLevel;
+  top_flag: string | null;
+}
+
+export interface MenuAnalysis {
+  dishes_found: MenuDish[];
+  safest_dish: string | null;
+  avoid_dishes: string[];
+}

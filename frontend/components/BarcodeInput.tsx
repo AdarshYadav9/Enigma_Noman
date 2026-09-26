@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { analyzeBarcode } from '../services/api';
+import { analyzeBarcode, getErrorMessage } from '../services/api';
 import { useUserStore } from '../store/userStore';
+import { Barcode, Loader2 } from 'lucide-react';
 
 export default function BarcodeInput() {
   const router = useRouter();
@@ -22,33 +23,45 @@ export default function BarcodeInput() {
     try {
       setLoading(true);
       setError("");
-      setDishName("Barcode Product");
+      setDishName("Packaged Product");
       const res = await analyzeBarcode(barcode.trim(), conditions);
       setResult(res);
       router.push("/result");
-    } catch (err: any) {
-      setError(err.message || "Failed to analyze barcode");
+    } catch (err: unknown) {
+      setError(getErrorMessage(err, "Product information not available."));
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-      {error && <div className="text-red-500 mb-2 text-sm bg-red-50 p-2 rounded">{error}</div>}
-      <input
-        type="text"
-        placeholder="Enter barcode number (e.g. 8901491500702)"
-        value={barcode}
-        onChange={(e) => setBarcode(e.target.value)}
-        className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
-      />
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+      {error && <div className="text-red-600 mb-2 text-sm bg-red-50 p-4 rounded-2xl border border-red-100">{error}</div>}
+      
+      <div className="bg-[#F4F5F7] rounded-2xl p-6 border border-[#E5E8EC] flex flex-col items-center text-center gap-4">
+        <div className="w-16 h-16 bg-white rounded-full shadow-sm flex items-center justify-center text-[#1677FF]">
+          <Barcode size={32} />
+        </div>
+        <div>
+          <h3 className="font-bold text-[#15171A]">Check a Packaged Product</h3>
+          <p className="text-sm text-[#69707A] mt-1 max-w-[250px]">Enter a barcode to retrieve available product information and analyze risks.</p>
+        </div>
+        
+        <input
+          type="text"
+          placeholder="e.g. 8901491500702"
+          value={barcode}
+          onChange={(e) => setBarcode(e.target.value)}
+          className="w-full max-w-[300px] mt-4 p-4 border border-[#E5E8EC] rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#EAF3FF] focus:border-[#1677FF] text-center text-lg tracking-wider"
+        />
+      </div>
+
       <button 
         type="submit"
         disabled={isLoading || conditions.length === 0 || !barcode.trim()}
-        className="bg-red-600 text-white font-bold py-3 rounded-lg hover:bg-red-700 disabled:opacity-50"
+        className="w-full bg-[#1677FF] text-white font-bold py-4 rounded-2xl shadow-[0_4px_14px_rgba(22,119,255,0.3)] hover:bg-[#155ACC] disabled:opacity-50 disabled:shadow-none transition-all flex justify-center items-center gap-2"
       >
-        {isLoading ? "Analyzing..." : "Analyze Barcode"}
+        {isLoading ? <><Loader2 className="animate-spin" size={18} /> Retrieving Info...</> : "Analyze Barcode"}
       </button>
     </form>
   );

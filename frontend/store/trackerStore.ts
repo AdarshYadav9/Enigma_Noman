@@ -1,11 +1,12 @@
 import { create } from 'zustand';
+import { RiskLevel } from '../types';
 
 export interface MealLog {
   id: string;
   name: string;
   sodium_mg: number;
   carbs_g: number;
-  risk_level: string;
+  risk_level: RiskLevel;
   timestamp: string;
 }
 

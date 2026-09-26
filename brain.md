@@ -76,7 +76,11 @@ genesis/
 - **Sodium Warning System:** Automatically tracks the total sodium per dish against the combined maximum safe daily intake thresholds for the user's selected conditions.
 - **Visual Risk Badges:** Clear UI indicators summarizing the meal into 🔴 HIGH RISK, 🟡 MODERATE RISK, or 🟢 LOW RISK based on the worst-offending ingredient.
 - **Safe Ingredients List:** Highlights the ingredients in the meal that are perfectly safe to consume, giving the user actionable dietary encouragement.
-- **OCR API Endpoint Ready:** A backend endpoint (`/analyze/ocr`) is fully implemented to extract ingredients from food label images via Tesseract-OCR.
+- **OCR Label Scanning:** Upload an image of a packaged food label to automatically extract and analyze ingredients via Tesseract-OCR.
+- **Restaurant Menu OCR:** Scan a restaurant menu photo to find dishes, analyze their risks against Indian dish data, and get recommendations for the safest choices and ones to avoid.
+- **Barcode Scanner Integration:** Enter a product barcode to automatically fetch ingredients and nutritional info via the OpenFoodFacts API for instant risk analysis.
+- **Daily Intake Tracker:** Log analyzed meals and track total daily sodium intake against safety limits with visual progress bars.
+- **Risk Comparison Mode:** Compare two dishes side-by-side to determine which is safer based on risk levels, sodium, carbs, and condition-specific flags.
 
 ### A. The Risk Engine (`risk_engine.py`)
 When a dish is analyzed, the engine:
@@ -119,8 +123,18 @@ Base URL: `http://localhost:8000`
 
 ### `POST /analyze/ocr`
 - **Payload:** `{ "image_base64": "...", "conditions": ["ckd"] }`
-- **Purpose:** Extracts ingredients from an image and analyzes them.
+- **Purpose:** Extracts ingredients from a food label image and analyzes them.
 - **Returns:** `RiskResult` (including `ingredients_found` array)
+
+### `POST /analyze/barcode`
+- **Payload:** `{ "barcode": "8901491500702", "conditions": ["diabetes"] }`
+- **Purpose:** Fetches nutritional data via OpenFoodFacts API and runs risk analysis.
+- **Returns:** `RiskResult`
+
+### `POST /analyze/menu`
+- **Payload:** `{ "image_base64": "...", "conditions": ["hypertension"] }`
+- **Purpose:** Extracts text from a menu image, matches dishes, and provides safe/avoid recommendations.
+- **Returns:** `{ dishes_found, safest_dish, avoid_dishes }`
 
 ---
 
@@ -151,7 +165,7 @@ Navigate to [http://localhost:3000](http://localhost:3000) to use the applicatio
 ---
 
 ## 7. Future Expansions & Roadmap
-- **User Authentication:** Save user profiles and condition presets.
-- **Database Integration:** Move from `.json` files to PostgreSQL or MongoDB for scalable dish additions.
-- **Upload UI:** Implement the drag-and-drop file uploader in the frontend to utilize the `/analyze/ocr` endpoint.
-- **Barcode Scanner:** Integrate external APIs (like OpenFoodFacts) via barcode scanning to automatically fetch ingredients.
+- **User Authentication:** Save user profiles, condition presets, and historical meal logs.
+- **Database Integration:** Move from `.json` files to PostgreSQL or MongoDB for scalable dish and ingredient additions.
+- **Mobile Application:** Port the Next.js PWA into a native React Native or Flutter application for easier camera usage.
+- **AI Recommendation Engine:** Use LLMs to suggest custom low-risk meal alternatives based on high-risk logs.

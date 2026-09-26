@@ -1,59 +1,66 @@
-import { Dish, RiskResult } from '../types';
+import { Dish, MenuAnalysis, RiskResult } from '../types';
 
-const BASE = "http://localhost:8000";
+const BASE = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8000';
 
-export async function searchDishes(q: string): Promise<Dish[]> {
-  const res = await fetch(`${BASE}/dish/search?q=${encodeURIComponent(q)}`);
-  if (!res.ok) throw new Error(await res.text());
-  return res.json();
+async function readError(res: Response): Promise<string> {
+  const body = await res.text().catch(() => '');
+  try {
+    const parsed: unknown = JSON.parse(body);
+    if (
+      parsed &&
+      typeof parsed === 'object' &&
+      'detail' in parsed &&
+      typeof (parsed as { detail: unknown }).detail === 'string'
+    ) {
+      return (parsed as { detail: string }).detail;
+    }
+  } catch {
+    // body was not JSON, fall through to raw text
+  }
+  return body || `Request failed (${res.status})`;
 }
 
-export async function analyzeDish(dish_name: string, conditions: string[]): Promise<RiskResult> {
-  const res = await fetch(`${BASE}/analyze/dish`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ dish_name, conditions })
-  });
-  if (!res.ok) throw new Error(await res.text());
-  return res.json();
+async function request<T>(path: string, init?: RequestInit): Promise<T> {
+  let res: Response;
+  try {
+    res = await fetch(`${BASE}${path}`, init);
+  } catch {
+    throw new Error('Cannot reach the analysis service. Please make sure the backend is running.');
+  }
+  if (!res.ok) throw new Error(await readError(res));
+  return res.json() as Promise<T>;
 }
 
-export async function analyzeIngredients(ingredients: string[], conditions: string[]): Promise<RiskResult> {
-  const res = await fetch(`${BASE}/analyze/ingredients`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ ingredients, conditions })
-  });
-  if (!res.ok) throw new Error(await res.text());
-  return res.json();
+const json = (body: unknown): RequestInit => ({
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(body),
+});
+
+export function getErrorMessage(e: unknown, fallback: string): string {
+  return e instanceof Error && e.message ? e.message : fallback;
 }
 
-export async function analyzeOCR(image_base64: string, conditions: string[]): Promise<RiskResult> {
-  const res = await fetch(`${BASE}/analyze/ocr`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ image_base64, conditions })
-  });
-  if (!res.ok) throw new Error(await res.text());
-  return res.json();
+export function searchDishes(q: string): Promise<Dish[]> {
+  return request<Dish[]>(`/dish/search?q=${encodeURIComponent(q)}`);
 }
 
-export async function analyzeBarcode(barcode: string, conditions: string[]): Promise<RiskResult> {
-  const res = await fetch(`${BASE}/analyze/barcode`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ barcode, conditions })
-  });
-  if (!res.ok) throw new Error(await res.text());
-  return res.json();
+export function analyzeDish(dish_name: string, conditions: string[]): Promise<RiskResult> {
+  return request<RiskResult>('/analyze/dish', json({ dish_name, conditions }));
 }
 
-export async function analyzeMenu(image_base64: string, conditions: string[]): Promise<any> {
-  const res = await fetch(`${BASE}/analyze/menu`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ image_base64, conditions })
-  });
-  if (!res.ok) throw new Error(await res.text());
-  return res.json();
+export function analyzeIngredients(ingredients: string[], conditions: string[]): Promise<RiskResult> {
+  return request<RiskResult>('/analyze/ingredients', json({ ingredients, conditions }));
+}
+
+export function analyzeOCR(image_base64: string, conditions: string[]): Promise<RiskResult> {
+  return request<RiskResult>('/analyze/ocr', json({ image_base64, conditions }));
+}
+
+export function analyzeBarcode(barcode: string, conditions: string[]): Promise<RiskResult> {
+  return request<RiskResult>('/analyze/barcode', json({ barcode, conditions }));
+}
+
+export function analyzeMenu(image_base64: string, conditions: string[]): Promise<MenuAnalysis> {
+  return request<MenuAnalysis>('/analyze/menu', json({ image_base64, conditions }));
 }

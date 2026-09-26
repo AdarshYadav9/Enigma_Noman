@@ -90,5 +90,6 @@ def analyze_risk(ingredients: list, conditions: list,
         "explanation": explanation,
         "hidden_alerts": hidden_alerts,
         "sodium_warning": sodium_warning,
-        "safe_ingredients": list(safe_ingredients)
+        "safe_ingredients": list(safe_ingredients),
+        "ingredients_found": ingredients  # Include original ingredients for frontend
     }

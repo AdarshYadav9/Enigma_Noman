@@ -1,13 +1,15 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import Link from 'next/link'
 import './globals.css'
+import Sidebar from '../components/Sidebar';
+import Topbar from '../components/Topbar';
+import MobileBottomNav from '../components/MobileBottomNav';
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 export const metadata: Metadata = {
-  title: 'Health Track',
-  description: 'Know what is really in your food',
+  title: 'Clinical Food Intelligence',
+  description: 'Personalized Hidden-Ingredient and Dietary-Risk Alert System',
 }
 
 export default function RootLayout({
@@ -16,27 +18,22 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className} suppressHydrationWarning>
-        <nav className="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-100">
-          <div className="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
-            <Link href="/" className="font-bold text-xl text-gray-900 flex items-center gap-2">
-              <span className="text-2xl">🩺</span> Health Track
-            </Link>
-            <div className="flex items-center gap-6">
-              <Link href="/tracker" className="text-sm font-medium text-gray-600 hover:text-red-600">
-                Daily Tracker
-              </Link>
-              <Link href="/compare" className="text-sm font-medium text-gray-600 hover:text-red-600">
-                Compare
-              </Link>
-              <div className="text-sm font-medium text-gray-400 hidden sm:block border-l pl-6">
-                Know what's in your food
+    <html lang="en" className={inter.variable}>
+      <body className="bg-[#F4F5F7] text-[#15171A] font-sans antialiased selection:bg-[#EAF3FF] selection:text-[#1677FF]" suppressHydrationWarning>
+        <div className="flex h-screen overflow-hidden">
+          <Sidebar />
+          
+          <div className="flex-1 flex flex-col md:pl-72 w-full h-full relative">
+            <Topbar />
+            <main className="flex-1 overflow-y-auto pb-24 md:pb-8 px-4 sm:px-8">
+              <div className="max-w-5xl mx-auto w-full pt-4">
+                {children}
               </div>
-            </div>
+            </main>
           </div>
-        </nav>
-        <main>{children}</main>
+          
+          <MobileBottomNav />
+        </div>
       </body>
     </html>
   )

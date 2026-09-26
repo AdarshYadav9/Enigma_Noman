@@ -6,7 +6,17 @@ if not hasattr(pkgutil, 'find_loader'):
     import importlib.util
     pkgutil.find_loader = importlib.util.find_spec
 import pytesseract
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+import platform
+import shutil
+
+# Auto-detect tesseract path for cross-platform compatibility
+if platform.system() == "Windows":
+    pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+else:
+    # macOS/Linux: try to find tesseract in PATH
+    tesseract_path = shutil.which('tesseract')
+    if tesseract_path:
+        pytesseract.pytesseract.tesseract_cmd = tesseract_path
 import re
 
 def extract_ingredients_from_image(image_base64: str) -> list:

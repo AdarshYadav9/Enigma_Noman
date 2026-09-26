@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useUserStore } from '../../store/userStore';
 import { useTrackerStore } from '../../store/trackerStore';
 import RiskCard from '../../components/RiskCard';
+import { ArrowLeft, Check, Plus } from 'lucide-react';
 
 export default function ResultPage() {
   const router = useRouter();
@@ -21,9 +22,16 @@ export default function ResultPage() {
   if (!result) return null;
 
   const handleAddLog = () => {
+    // Try to get actual sodium from the result if available
+    // For dish analyses, we don't have sodium in the result currently
+    // Use a reasonable default based on risk level
+    const estimatedSodium = result.sodium_warning ? 1500 :
+      result.risk_level === 'high' ? 800 :
+      result.risk_level === 'moderate' ? 400 : 200;
+
     addMeal({
       name: dishName || "Custom Analysis",
-      sodium_mg: result.sodium_warning ? 1500 : 300, // heuristic if missing
+      sodium_mg: estimatedSodium,
       carbs_g: 0,
       risk_level: result.risk_level,
       timestamp: new Date().toISOString()
@@ -32,31 +40,31 @@ export default function ResultPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6">
-      <div className="max-w-2xl mx-auto flex flex-col gap-8">
-        
+    <div className="pb-12 animate-in fade-in duration-500">
+      
+      <div className="flex items-center justify-between mb-8">
         <button 
           onClick={() => router.push("/")}
-          className="self-start flex items-center gap-2 text-gray-500 hover:text-gray-900 transition-colors font-medium"
+          className="flex items-center gap-2 text-[#69707A] hover:text-[#1677FF] transition-colors font-medium text-sm bg-white px-4 py-2 rounded-full border border-[#E5E8EC] shadow-sm"
         >
-          <span>←</span> Analyze Another Food
+          <ArrowLeft size={16} aria-hidden="true" /> Back to Analysis
         </button>
-
-        <RiskCard result={result} dishName={dishName || "Custom Analysis"} />
 
         <button 
           onClick={handleAddLog}
           disabled={added}
-          className="w-full bg-slate-900 text-white font-bold py-4 rounded-xl shadow hover:bg-slate-800 disabled:opacity-50 disabled:bg-green-600 transition-colors"
+          className={`flex items-center gap-2 font-bold px-5 py-2.5 rounded-full transition-all shadow-sm text-sm ${
+            added 
+              ? "bg-[#F6FFED] text-[#52C41A] border border-[#52C41A]/20" 
+              : "bg-[#15171A] text-white hover:bg-[#2A2E33]"
+          }`}
         >
-          {added ? "✅ Added to Today's Log" : "➕ Add to Today's Log"}
+          {added ? <><Check size={16} aria-hidden="true" /> Added to Today&rsquo;s Log</> : <><Plus size={16} aria-hidden="true" /> Add to Log</>}
         </button>
-
-        <p className="text-center text-sm text-gray-400 mt-4 max-w-md mx-auto">
-          This is a decision-support tool, not medical advice. 
-          Always consult your doctor before making dietary changes.
-        </p>
       </div>
+
+      <RiskCard result={result} dishName={dishName || "Custom Analysis"} />
+
     </div>
   );
 }
