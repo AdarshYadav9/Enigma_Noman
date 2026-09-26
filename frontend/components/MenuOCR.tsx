@@ -90,6 +90,16 @@ export default function MenuOCR() {
             ))}
           </div>
           
+          {menuResult.extracted_text && (
+            <div className="mt-6 border-t pt-4">
+              <h4 className="font-bold mb-2 text-gray-700">Raw OCR Text:</h4>
+              <div className="bg-gray-50 p-3 rounded-lg border border-gray-200 text-sm text-gray-600 max-h-48 overflow-y-auto whitespace-pre-wrap">
+                {menuResult.extracted_text}
+              </div>
+              <p className="text-xs text-gray-400 mt-1">If no dishes were found, check if the text above matches dishes in the database (e.g. "samosa", "paneer tikka", etc).</p>
+            </div>
+          )}
+          
           <button onClick={() => setMenuResult(null)} className="w-full mt-4 py-2 border rounded-lg font-medium hover:bg-gray-50">Scan Another Menu</button>
         </div>
       )}

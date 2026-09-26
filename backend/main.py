@@ -127,23 +127,7 @@ def analyze_barcode(req: BarcodeAnalyzeRequest):
 @app.post("/analyze/menu")
 def analyze_menu(req: MenuAnalyzeRequest):
     _, extracted_text = extract_ingredients_from_image(req.image_base64)
-    # Since extract_ingredients_from_image cleans and splits by comma,
-    # let's just use the raw extracted text or similar, but wait, the prompt says:
-    # "After OCR text extracted: -> Parse as DISH NAMES instead -> Match each dish name against indian_dishes.json"
-    # Actually, let's just do a simple OCR text fetch for menu
-    import base64
-    from io import BytesIO
-    from PIL import Image
-    import pytesseract
-    
-    image_data_str = req.image_base64
-    if "," in image_data_str:
-        image_data_str = image_data_str.split(",")[1]
-        
-    image_data = base64.b64decode(image_data_str)
-    image = Image.open(BytesIO(image_data))
-    
-    text = pytesseract.image_to_string(image)
+    text = extracted_text
     words = text.lower().replace('\\n', ' ').split()
     
     # Match words against indian_dishes.json keys
@@ -152,9 +136,11 @@ def analyze_menu(req: MenuAnalyzeRequest):
     safest_dish = None
     safest_score = float('inf')
     
+    text_clean = text.lower().replace('\n', ' ')
+    
     for dish_name, dish_data in dishes_db.items():
         # simple substring match
-        if dish_name in text.lower():
+        if dish_name in text_clean:
             result = analyze_risk(
                 ingredients=dish_data["ingredients"],
                 conditions=req.conditions,
@@ -184,6 +170,7 @@ def analyze_menu(req: MenuAnalyzeRequest):
     return {
         "dishes_found": dishes_found,
         "safest_dish": safest_dish,
-        "avoid_dishes": avoid_dishes
+        "avoid_dishes": avoid_dishes,
+        "extracted_text": text
     }
 
