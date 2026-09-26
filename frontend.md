@@ -16,11 +16,14 @@ This document outlines the setup, architecture, and technology stack for the Nex
 ```text
 frontend/
 ├── app/                  # Next.js App Router pages and layouts
-│   ├── layout.tsx        # Global layout, including Navbar
+│   ├── layout.tsx        # Global layout, including Navbar/Sidebar
 │   ├── page.tsx          # Landing page (Condition selection & search)
 │   ├── globals.css       # Global Tailwind imports and base styles
-│   ├── result/           # Dish/Ingredient Analysis results
 │   ├── compare/          # Side-by-side dish comparison
+│   ├── history/          # User history
+│   ├── profile/          # User profile
+│   ├── result/           # Dish/Ingredient Analysis results
+│   ├── settings/         # App settings
 │   └── tracker/          # Daily intake tracker and meal logs
 ├── components/           # Reusable UI components
 │   ├── BarcodeInput.tsx  # Input for barcode analysis
@@ -29,9 +32,12 @@ frontend/
 │   ├── DishSearch.tsx    # Multi-tabbed input (Search, Manual, OCR, Menu, Barcode)
 │   ├── HiddenAlertBox.tsx# Accordion for deceptive ingredient warnings
 │   ├── MenuOCR.tsx       # Restaurant menu upload and analysis
+│   ├── MobileBottomNav.tsx # Mobile navigation bar
 │   ├── OCRUploader.tsx   # Packaged food label upload and analysis
 │   ├── RiskBadge.tsx     # Colored pill for risk levels (High/Moderate/Low)
-│   └── RiskCard.tsx      # Full analysis display component
+│   ├── RiskCard.tsx      # Full analysis display component
+│   ├── Sidebar.tsx       # Desktop sidebar navigation
+│   └── Topbar.tsx        # Top navigation bar
 ├── services/
 │   └── api.ts            # Typed functions mapping to FastAPI endpoints
 ├── store/

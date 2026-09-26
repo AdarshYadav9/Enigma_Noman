@@ -1,15 +1,28 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { User, Shield, Bell, Save } from 'lucide-react';
+import { useUserStore } from '../../store/userStore';
 
 export default function ProfilePage() {
+  const user = useUserStore((state) => state.user);
+
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
+    name: user?.displayName || '',
+    email: user?.email || '',
     notifications: true,
     dataSharing: false,
   });
+
+  useEffect(() => {
+    if (user) {
+      setFormData(prev => ({
+        ...prev,
+        name: user.displayName || '',
+        email: user.email || '',
+      }));
+    }
+  }, [user]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, type, checked } = e.target;

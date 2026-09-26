@@ -1,8 +1,17 @@
 "use client";
 import Link from 'next/link';
 import { Search, Bell, HelpCircle } from 'lucide-react';
+import { useUserStore } from '../store/userStore';
+import { auth } from '../lib/firebase';
+import { signOut } from 'firebase/auth';
 
 export default function Topbar() {
+  const user = useUserStore((state) => state.user);
+
+  const handleSignOut = () => {
+    signOut(auth);
+  };
+
   return (
     <header className="sticky top-0 z-30 flex items-center justify-between px-8 py-4 bg-[#F4F5F7]/80 backdrop-blur-md">
       <div className="flex-1 max-w-xl hidden md:flex">
@@ -30,11 +39,36 @@ export default function Topbar() {
           <Bell size={18} />
           <span className="absolute top-2 right-2 w-2 h-2 rounded-full bg-[#FF4D4F] border border-white"></span>
         </button>
-        <Link
-          href="/profile"
-          aria-label="Open your profile"
-          className="w-10 h-10 rounded-full bg-gradient-to-br from-[#1677FF] to-blue-400 border-2 border-white shadow-sm shrink-0 transition-transform hover:scale-105"
-        />
+        
+        {user ? (
+          <div className="flex items-center gap-3 ml-2">
+            <Link
+              href="/profile"
+              aria-label="Open your profile"
+              className="w-10 h-10 rounded-full bg-gradient-to-br from-[#1677FF] to-blue-400 border-2 border-white shadow-sm shrink-0 transition-transform hover:scale-105 flex items-center justify-center overflow-hidden"
+            >
+              {user.photoURL ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={user.photoURL} alt="Profile" className="w-full h-full object-cover" />
+              ) : (
+                <span className="text-white text-sm font-semibold">{user.email?.[0].toUpperCase()}</span>
+              )}
+            </Link>
+            <button 
+              onClick={handleSignOut}
+              className="text-sm font-medium text-[#69707A] hover:text-[#1677FF] transition-colors"
+            >
+              Sign out
+            </button>
+          </div>
+        ) : (
+          <Link
+            href="/login"
+            className="ml-2 px-4 py-2 bg-[#1677FF] text-white text-sm font-semibold rounded-md shadow hover:bg-blue-500 transition-colors"
+          >
+            Sign in
+          </Link>
+        )}
       </div>
     </header>
   );

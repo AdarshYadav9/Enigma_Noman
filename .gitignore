@@ -1,0 +1,14 @@
+# Root-level ignore
+
+# macOS
+.DS_Store
+
+# Environment Variables
+.env
+.env.*
+!.env.example
+
+# IDEs
+.vscode/
+.idea/
+*.swp
