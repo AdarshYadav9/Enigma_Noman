@@ -5,13 +5,16 @@ import { useRouter } from 'next/navigation';
 import { searchDishes, analyzeDish, analyzeIngredients } from '../services/api';
 import { useUserStore } from '../store/userStore';
 import { Dish } from '../types';
+import OCRUploader from './OCRUploader';
+import MenuOCR from './MenuOCR';
+import BarcodeInput from './BarcodeInput';
 
 export default function DishSearch() {
   const router = useRouter();
   const { conditions, setResult, setLoading, isLoading, setDishName } = useUserStore();
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<Dish[]>([]);
-  const [tab, setTab] = useState<"search" | "manual">("search");
+  const [tab, setTab] = useState<"search" | "manual" | "ocr" | "menu" | "barcode">("search");
   const [manualIngredients, setManualIngredients] = useState("");
   const [error, setError] = useState("");
 
@@ -67,26 +70,31 @@ export default function DishSearch() {
     }
   };
 
+  const tabs = [
+    { id: "search", label: "Search Dish" },
+    { id: "manual", label: "Manual" },
+    { id: "ocr", label: "📷 Scan Label" },
+    { id: "menu", label: "🍽️ Menu Scan" },
+    { id: "barcode", label: "🔢 Barcode" }
+  ];
+
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-      <div className="flex gap-4 mb-4 border-b pb-2">
-        <button 
-          onClick={() => setTab("search")}
-          className={`font-medium ${tab === "search" ? "text-red-600 border-b-2 border-red-600" : "text-gray-500"}`}
-        >
-          Search Dish
-        </button>
-        <button 
-          onClick={() => setTab("manual")}
-          className={`font-medium ${tab === "manual" ? "text-red-600 border-b-2 border-red-600" : "text-gray-500"}`}
-        >
-          Type ingredients manually
-        </button>
+      <div className="flex gap-4 mb-6 border-b pb-2 overflow-x-auto whitespace-nowrap scrollbar-hide">
+        {tabs.map(t => (
+          <button 
+            key={t.id}
+            onClick={() => setTab(t.id as any)}
+            className={`font-medium px-2 pb-2 ${tab === t.id ? "text-red-600 border-b-2 border-red-600" : "text-gray-500 hover:text-gray-700"}`}
+          >
+            {t.label}
+          </button>
+        ))}
       </div>
 
       {error && <div className="text-red-500 mb-4 text-sm bg-red-50 p-2 rounded">{error}</div>}
 
-      {tab === "search" ? (
+      {tab === "search" && (
         <div className="relative">
           <input
             type="text"
@@ -109,7 +117,9 @@ export default function DishSearch() {
             </div>
           )}
         </div>
-      ) : (
+      )}
+      
+      {tab === "manual" && (
         <div className="flex flex-col gap-3">
           <textarea
             placeholder="e.g. maida, sugar, potato, salt"
@@ -126,6 +136,12 @@ export default function DishSearch() {
           </button>
         </div>
       )}
+
+      {tab === "ocr" && <OCRUploader />}
+      
+      {tab === "menu" && <MenuOCR />}
+      
+      {tab === "barcode" && <BarcodeInput />}
       
       {isLoading && tab === "search" && <div className="mt-4 text-gray-500 text-sm">Loading...</div>}
     </div>

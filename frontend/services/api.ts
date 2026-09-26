@@ -37,3 +37,23 @@ export async function analyzeOCR(image_base64: string, conditions: string[]): Pr
   if (!res.ok) throw new Error(await res.text());
   return res.json();
 }
+
+export async function analyzeBarcode(barcode: string, conditions: string[]): Promise<RiskResult> {
+  const res = await fetch(`${BASE}/analyze/barcode`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ barcode, conditions })
+  });
+  if (!res.ok) throw new Error(await res.text());
+  return res.json();
+}
+
+export async function analyzeMenu(image_base64: string, conditions: string[]): Promise<any> {
+  const res = await fetch(`${BASE}/analyze/menu`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ image_base64, conditions })
+  });
+  if (!res.ok) throw new Error(await res.text());
+  return res.json();
+}
