@@ -26,7 +26,16 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
               updated_at: new Date().toISOString(),
             }, { onConflict: 'id' });
             
-          if (error) console.error("Supabase sync error:", error.message);
+          if (error) {
+            if (error.message.includes("row-level security")) {
+              console.warn(
+                "Supabase sync: RLS policy on 'public.users' requires an INSERT/UPDATE policy for the anon role. " +
+                "Run the policy script from db/schema.sql in your Supabase SQL editor if you wish to mirror Firebase users to Supabase."
+              );
+            } else {
+              console.error("Supabase sync error:", error.message);
+            }
+          }
         } catch (err) {
           console.error("Error syncing user to Supabase:", err);
         }

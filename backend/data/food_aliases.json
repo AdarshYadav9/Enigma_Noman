@@ -1,0 +1,305 @@
+{
+  "pav bhaji": [
+    "pav bhaji",
+    "pav-bhaji",
+    "pavbhaji",
+    "pao bhaji",
+    "paav bhaji",
+    "पाव भाजी"
+  ],
+  "dal makhani": [
+    "dal makhani",
+    "daal makhani",
+    "makhani dal",
+    "dal makhni",
+    "दाल मखनी"
+  ],
+  "samosa": [
+    "samosa",
+    "samosas",
+    "samose",
+    "singhada",
+    "समोसा"
+  ],
+  "biryani": [
+    "biryani",
+    "biriyani",
+    "briyani",
+    "dum biryani",
+    "veg biryani",
+    "chicken biryani",
+    "mutton biryani",
+    "बिरयानी"
+  ],
+  "chole bhature": [
+    "chole bhature",
+    "chola bhatura",
+    "chana bhatura",
+    "chhole bhature",
+    "छोले भटूरे"
+  ],
+  "idli sambar": [
+    "idli sambar",
+    "idly sambar",
+    "idli",
+    "idly",
+    "sambar idli",
+    "इडली सांबर"
+  ],
+  "vada pav": [
+    "vada pav",
+    "vadapav",
+    "wada pav",
+    "wada pao",
+    "vada pao",
+    "batata vada",
+    "वडा पाव"
+  ],
+  "butter chicken": [
+    "butter chicken",
+    "murg makhani",
+    "murgh makhani",
+    "बटर चिकन"
+  ],
+  "paneer tikka": [
+    "paneer tikka",
+    "panner tikka",
+    "tandoori paneer",
+    "पनीर टिक्का"
+  ],
+  "masala dosa": [
+    "masala dosa",
+    "dosa",
+    "masala dhosa",
+    "dhosa",
+    "मसाला डोसा"
+  ],
+  "rajma chawal": [
+    "rajma chawal",
+    "rajma",
+    "rajmah",
+    "rajma rice",
+    "राजमा चावल"
+  ],
+  "poha": [
+    "poha",
+    "pohay",
+    "pohe",
+    "aval",
+    "atukulu",
+    "chivda",
+    "kanda poha",
+    "batata poha",
+    "पोहा"
+  ],
+  "aloo paratha": [
+    "aloo paratha",
+    "alu paratha",
+    "aloo paratha with butter",
+    "paratha",
+    "आलू पराठा"
+  ],
+  "bhel puri": [
+    "bhel puri",
+    "bhelpuri",
+    "bhel",
+    "भेल पूरी"
+  ],
+  "upma": [
+    "upma",
+    "uppuma",
+    "rava upma",
+    "uppittu",
+    "उपमा"
+  ],
+  "pani puri": [
+    "pani puri",
+    "panipuri",
+    "golgappa",
+    "puchka",
+    "gupchup",
+    "पानी पूरी"
+  ],
+  "dhokla": [
+    "dhokla",
+    "khaman",
+    "khaman dhokla",
+    "ढोकला"
+  ],
+  "khichdi": [
+    "khichdi",
+    "khichri",
+    "moong dal khichdi",
+    "khichadi",
+    "खिचड़ी"
+  ],
+  "bread pakora": [
+    "bread pakora",
+    "bread pakoda",
+    "ब्रेड पकोड़ा"
+  ],
+  "jalebi": [
+    "jalebi",
+    "jilapi",
+    "zelapi",
+    "जलेबी"
+  ],
+  "paneer butter masala": [
+    "paneer butter masala",
+    "paneer makhani",
+    "butter paneer",
+    "paneer makhanwala",
+    "paneer masala"
+  ],
+  "palak paneer": [
+    "palak paneer",
+    "saag paneer",
+    "palak paneer curry"
+  ],
+  "dal tadka": [
+    "dal tadka",
+    "dal fry",
+    "yellow dal",
+    "toor dal",
+    "tadka dal"
+  ],
+  "chicken curry": [
+    "chicken curry",
+    "murgh curry",
+    "curry chicken",
+    "chicken masala"
+  ],
+  "tandoori chicken": [
+    "tandoori chicken",
+    "tandoori murgh",
+    "tandoori chicken half",
+    "tandoori chicken full"
+  ],
+  "chicken tikka": [
+    "chicken tikka",
+    "murgh tikka",
+    "chicken tikka kebab"
+  ],
+  "roti": [
+    "roti",
+    "phulka",
+    "chapati",
+    "chapatis",
+    "rotis"
+  ],
+  "tandoori roti": [
+    "tandoori roti",
+    "butter roti",
+    "tandoori butter roti"
+  ],
+  "naan": [
+    "naan",
+    "plain naan",
+    "butter naan",
+    "garlic naan",
+    "cheese naan"
+  ],
+  "paratha": [
+    "paratha",
+    "laccha paratha",
+    "plain paratha",
+    "parantha"
+  ],
+  "jeera rice": [
+    "jeera rice",
+    "cumin rice",
+    "zeera rice"
+  ],
+  "veg pulao": [
+    "veg pulao",
+    "pulao",
+    "vegetable pulao",
+    "pilaf"
+  ],
+  "fried rice": [
+    "fried rice",
+    "veg fried rice",
+    "chicken fried rice",
+    "egg fried rice"
+  ],
+  "hakka noodles": [
+    "hakka noodles",
+    "noodles",
+    "veg noodles",
+    "chowmein",
+    "chow mein"
+  ],
+  "plain dosa": [
+    "plain dosa",
+    "sada dosa",
+    "dosa",
+    "paper dosa"
+  ],
+  "medu vada": [
+    "medu vada",
+    "vada sambar",
+    "wada",
+    "sambar vada"
+  ],
+  "uttapam": [
+    "uttapam",
+    "onion uttapam",
+    "tomato uttapam",
+    "oothappam"
+  ],
+  "gulab jamun": [
+    "gulab jamun",
+    "gulabjamun",
+    "kala jamun"
+  ],
+  "rasgulla": [
+    "rasgulla",
+    "roshogolla",
+    "rasgulle"
+  ],
+  "kheer": [
+    "kheer",
+    "payasam",
+    "rice kheer"
+  ],
+  "raita": [
+    "raita",
+    "boondi raita",
+    "mix veg raita",
+    "cucumber raita"
+  ],
+  "masala chai": [
+    "masala chai",
+    "tea",
+    "chai",
+    "hot tea"
+  ],
+  "lassi": [
+    "lassi",
+    "sweet lassi",
+    "mango lassi",
+    "salted lassi"
+  ],
+  "veg burger": [
+    "veg burger",
+    "burger",
+    "aloo tikki burger"
+  ],
+  "french fries": [
+    "french fries",
+    "fries",
+    "potato fries"
+  ],
+  "pasta": [
+    "pasta",
+    "white sauce pasta",
+    "red sauce pasta",
+    "arrabiata"
+  ],
+  "pizza": [
+    "pizza",
+    "margherita pizza",
+    "cheese pizza",
+    "veg pizza"
+  ]
+}

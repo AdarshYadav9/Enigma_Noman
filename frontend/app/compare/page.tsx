@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { searchDishes, analyzeDish } from '../../services/api';
 import { useUserStore } from '../../store/userStore';
-import { Dish, RiskResult } from '../../types';
+import { Dish, RiskResult, RiskLevel } from '../../types';
 import { ArrowLeftRight, Loader2, CheckCircle2, ShieldCheck, AlertCircle } from 'lucide-react';
 
 export default function ComparePage() {
@@ -47,13 +47,13 @@ export default function ComparePage() {
     }
   };
 
-  const scoreMap = { "low": 1, "moderate": 2, "high": 3 };
+  const scoreMap: Record<RiskLevel, number> = { "low": 1, "moderate": 2, "high": 3, "unknown": 4 };
   
   let betterChoice: string | null = null;
   let isTie = false;
   if (res1 && res2 && d1Data && d2Data) {
-    const s1 = scoreMap[res1.risk_level];
-    const s2 = scoreMap[res2.risk_level];
+    const s1 = scoreMap[res1.risk_level] ?? 4;
+    const s2 = scoreMap[res2.risk_level] ?? 4;
     if (s1 < s2) betterChoice = d1Data.name;
     else if (s2 < s1) betterChoice = d2Data.name;
     else if (d1Data.sodium_mg !== d2Data.sodium_mg) {

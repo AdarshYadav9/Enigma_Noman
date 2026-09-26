@@ -2,18 +2,14 @@
 __pycache__/
 *.py[cod]
 *$py.class
+*.so
+*.pyd
 
-# Virtual environments
-venv/
-env/
-ENV/
-.env
-.venv
-
-# macOS
-.DS_Store
+# C extensions
+*.so
 
 # Distribution / packaging
+.Python
 build/
 develop-eggs/
 dist/
@@ -32,16 +28,56 @@ share/python-wheels/
 *.egg
 MANIFEST
 
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Environment Variables
+.env
+.env.*
+!.env.example
+
 # PyInstaller
 *.manifest
 *.spec
 
-# Pytest / Coverage
-.coverage
-htmlcov/
-.pytest_cache/
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
 
-# IDE / Editor
-.vscode/
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pytype static analyzer
+.pytype/
+
+# Cython debug output
+cython_debug/
+
+# OS and Editor files
+.DS_Store
+Thumbs.db
 .idea/
+.vscode/
 *.swp
+*.swo
+*~

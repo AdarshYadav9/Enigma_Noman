@@ -1,0 +1,142 @@
+{
+  "vada pav": [
+    {
+      "name": "idli sambar",
+      "category": "breakfast_snack",
+      "reason": "Steamed fermented lentil-rice cake with vegetable stew, lower in refined oil and trans fats."
+    },
+    {
+      "name": "dhokla",
+      "category": "breakfast_snack",
+      "reason": "Steamed chickpea cake, substantially lower saturated fat than deep-fried snacks."
+    },
+    {
+      "name": "poha",
+      "category": "breakfast_snack",
+      "reason": "Cooked flattened rice with vegetables, prepared with minimal oil compared to deep-frying."
+    }
+  ],
+  "pav bhaji": [
+    {
+      "name": "khichdi",
+      "category": "main",
+      "reason": "Wholesome rice and yellow lentil dish, gentle on blood sugar and blood pressure with controlled seasoning."
+    },
+    {
+      "name": "upma",
+      "category": "breakfast_snack",
+      "reason": "Light semolina preparation with vegetables and balanced sodium."
+    },
+    {
+      "name": "idli sambar",
+      "category": "breakfast_snack",
+      "reason": "Steamed meal containing beneficial dietary fiber and no added butter."
+    }
+  ],
+  "samosa": [
+    {
+      "name": "dhokla",
+      "category": "snack",
+      "reason": "Steamed snack option free from deep-frying and high-temperature refined oils."
+    },
+    {
+      "name": "poha",
+      "category": "snack",
+      "reason": "Lighter snack alternative made from flattened rice, containing less sodium and zero maida."
+    },
+    {
+      "name": "upma",
+      "category": "snack",
+      "reason": "Roasted grain preparation cooked with seasonal vegetables and moderate sodium."
+    }
+  ],
+  "biryani": [
+    {
+      "name": "khichdi",
+      "category": "main",
+      "reason": "Comforting lentil-rice combination without excess oil, salt, or flavor enhancers."
+    },
+    {
+      "name": "rajma chawal",
+      "category": "main",
+      "reason": "High-protein kidney bean curry with steamed rice, offering more dietary fiber."
+    }
+  ],
+  "chole bhature": [
+    {
+      "name": "rajma chawal",
+      "category": "main",
+      "reason": "Legume-based meal served with boiled rice instead of deep-fried refined flour bhatura."
+    },
+    {
+      "name": "idli sambar",
+      "category": "main",
+      "reason": "Fermented steamed option that eliminates refined flour and deep-frying."
+    },
+    {
+      "name": "dhokla",
+      "category": "snack",
+      "reason": "Steamed chickpea alternative without heavy refined frying oils."
+    }
+  ],
+  "butter chicken": [
+    {
+      "name": "paneer tikka",
+      "category": "curry_protein",
+      "reason": "Dry roasted preparation eliminating heavy heavy cream and butter gravy."
+    },
+    {
+      "name": "rajma chawal",
+      "category": "main",
+      "reason": "Plant-based protein alternative without heavy dairy creams or high saturated fats."
+    }
+  ],
+  "bread pakora": [
+    {
+      "name": "poha",
+      "category": "snack",
+      "reason": "Non-deep-fried breakfast/snack option with significantly lower oil absorption."
+    },
+    {
+      "name": "dhokla",
+      "category": "snack",
+      "reason": "Steamed gram flour cake instead of deep-fried refined bread."
+    }
+  ],
+  "jalebi": [
+    {
+      "name": "dhokla",
+      "category": "snack",
+      "reason": "Savory steamed alternative that avoids direct refined sugar syrup saturation."
+    },
+    {
+      "name": "poha",
+      "category": "snack",
+      "reason": "Savory whole-grain alternative without sugar syrup."
+    }
+  ],
+  "bhel puri": [
+    {
+      "name": "dhokla",
+      "category": "snack",
+      "reason": "Steamed snack with lower salt and tamarind concentrate compared to street chaat."
+    },
+    {
+      "name": "poha",
+      "category": "snack",
+      "reason": "Freshly cooked grain snack without high-sodium chaat chutneys."
+    }
+  ],
+  "pani puri": [
+    {
+      "name": "dhokla",
+      "category": "snack",
+      "reason": "Controlled sodium steamed alternative without high-acid tamarind water."
+    },
+    {
+      "name": "idli sambar",
+      "category": "snack",
+      "reason": "Nutritious and hygiene-controlled steamed food."
+    }
+  ]
+}

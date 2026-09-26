@@ -1,0 +1,107 @@
+{
+  "allergen_aliases": {
+    "peanut": [
+      "peanut",
+      "peanuts",
+      "groundnut",
+      "groundnuts",
+      "moongfali",
+      "mungfali",
+      "ground nuts",
+      "arachis oil"
+    ],
+    "tree nuts": [
+      "tree nuts",
+      "almond",
+      "almonds",
+      "walnut",
+      "walnuts",
+      "cashew",
+      "cashews",
+      "pistachio",
+      "badam",
+      "kaju",
+      "akhrot"
+    ],
+    "milk": [
+      "milk",
+      "dairy",
+      "lactose",
+      "whey",
+      "casein",
+      "butter",
+      "cream",
+      "paneer",
+      "cheese",
+      "curd",
+      "yogurt",
+      "ghee",
+      "doodh"
+    ],
+    "gluten": [
+      "gluten",
+      "wheat",
+      "wheat flour",
+      "maida",
+      "barley",
+      "rye",
+      "semolina",
+      "suji",
+      "atta",
+      "refined flour",
+      "bread"
+    ],
+    "soy": [
+      "soy",
+      "soya",
+      "soybean",
+      "soy lecithin",
+      "tofu",
+      "soy sauce"
+    ],
+    "egg": [
+      "egg",
+      "eggs",
+      "egg white",
+      "egg yolk",
+      "albumin",
+      "anda"
+    ],
+    "shellfish": [
+      "shellfish",
+      "prawn",
+      "prawns",
+      "shrimp",
+      "crab",
+      "lobster",
+      "jheenga"
+    ],
+    "mustard": [
+      "mustard",
+      "sarson",
+      "rai",
+      "mustard oil",
+      "mustard seeds"
+    ],
+    "sesame": [
+      "sesame",
+      "til",
+      "tila",
+      "sesame oil",
+      "sesame seeds"
+    ]
+  },
+  "ambiguous_terms": {
+    "natural flavours": "Ingredient composition is not fully specified. May contain MSG or undisclosed additives.",
+    "edible starch": "Ingredient composition is not fully specified. Refined starch can quickly spike blood glucose.",
+    "vegetable fat": "Unspecified vegetable oil source, often palm oil or partially hydrogenated fats.",
+    "flavouring substances": "Ingredient composition is not fully specified.",
+    "food additive": "Unspecified food additive.",
+    "permitted emulsifier": "Chemical additive composition not declared.",
+    "acidity regulator": "Unspecified chemical acidity regulator, may contain sodium compounds.",
+    "fruit juice concentrate": "Liquid sugar equivalent to added sugars.",
+    "enriched flour": "Refined wheat flour (maida) with synthetic nutrients added.",
+    "modified starch": "Highly processed carbohydrate that affects digestion and glucose response.",
+    "iodised salt": "Processed sodium chloride; contributes directly to dietary sodium limits."
+  }
+}

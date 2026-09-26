@@ -1,38 +1,58 @@
 {
   "diabetes": {
-    "high": ["maida","corn syrup","maltodextrin","white rice flour",
-             "sugar","glucose syrup","dextrose","refined flour",
-             "starch","palm sugar"],
-    "moderate": ["potato","white rice","refined oil","bread"],
+    "high": ["maida", "corn syrup", "maltodextrin", "white rice flour", "sugar", "glucose syrup", "dextrose", "refined flour", "starch", "palm sugar"],
+    "high_risk_ingredients": ["maida", "corn syrup", "maltodextrin", "white rice flour", "sugar", "glucose syrup", "dextrose", "refined flour", "starch", "palm sugar"],
+    "moderate": ["potato", "white rice", "refined oil", "bread"],
+    "moderate_risk_ingredients": ["potato", "white rice", "refined oil", "bread"],
     "sodium_safe_mg": 2000,
     "carb_limit_g": 45,
+    "limits": {
+      "sugar_g": 10,
+      "carbs_g": 45,
+      "sodium_mg": 2000
+    },
     "label": "Blood Sugar Risk"
   },
   "hypertension": {
-    "high": ["salt","sodium","msg","ajinomoto","baking soda",
-             "sodium benzoate","monosodium glutamate","pickle brine"],
-    "moderate": ["butter","cream","cheese","processed meat"],
+    "high": ["salt", "sodium", "msg", "ajinomoto", "baking soda", "sodium benzoate", "monosodium glutamate", "pickle brine"],
+    "high_risk_ingredients": ["salt", "sodium", "msg", "ajinomoto", "baking soda", "sodium benzoate", "monosodium glutamate", "pickle brine"],
+    "moderate": ["butter", "cream", "cheese", "processed meat"],
+    "moderate_risk_ingredients": ["butter", "cream", "cheese", "processed meat"],
     "sodium_safe_mg": 1500,
+    "limits": {
+      "sodium_mg": 1500
+    },
     "label": "Blood Pressure Risk"
   },
   "ckd": {
-    "high": ["salt","phosphate","potassium","high protein",
-             "sodium phosphate","potassium chloride","phosphoric acid"],
-    "moderate": ["tomato","potato","dairy","banana","orange"],
+    "high": ["salt", "phosphate", "potassium", "high protein", "sodium phosphate", "potassium chloride", "phosphoric acid"],
+    "high_risk_ingredients": ["salt", "phosphate", "potassium", "high protein", "sodium phosphate", "potassium chloride", "phosphoric acid"],
+    "moderate": ["tomato", "potato", "dairy", "banana", "orange"],
+    "moderate_risk_ingredients": ["tomato", "potato", "dairy", "banana", "orange"],
     "sodium_safe_mg": 1000,
+    "limits": {
+      "sodium_mg": 1000
+    },
     "label": "Kidney Risk"
   },
   "pcos": {
-    "high": ["maida","refined oil","trans fat","sugar",
-             "hydrogenated oil","palm oil","vanaspati"],
-    "moderate": ["white rice","cream","potato","corn flour"],
+    "high": ["maida", "refined oil", "trans fat", "sugar", "hydrogenated oil", "palm oil", "vanaspati"],
+    "high_risk_ingredients": ["maida", "refined oil", "trans fat", "sugar", "hydrogenated oil", "palm oil", "vanaspati"],
+    "moderate": ["white rice", "cream", "potato", "corn flour"],
+    "moderate_risk_ingredients": ["white rice", "cream", "potato", "corn flour"],
     "sodium_safe_mg": 2000,
+    "limits": {
+      "sugar_g": 15,
+      "sodium_mg": 2000
+    },
     "label": "Hormonal Risk"
   },
   "allergy": {
-    "high": ["peanut","gluten","milk","egg","soy","wheat",
-             "tree nuts","shellfish","sesame","mustard"],
+    "high": ["peanut", "gluten", "milk", "egg", "soy", "wheat", "tree nuts", "shellfish", "sesame", "mustard"],
+    "high_risk_ingredients": ["peanut", "gluten", "milk", "egg", "soy", "wheat", "tree nuts", "shellfish", "sesame", "mustard"],
     "moderate": [],
+    "moderate_risk_ingredients": [],
+    "limits": {},
     "label": "Allergy Risk"
   }
 }
