@@ -6,6 +6,7 @@ if not hasattr(pkgutil, 'find_loader'):
     import importlib.util
     pkgutil.find_loader = importlib.util.find_spec
 import pytesseract
+pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 import re
 
 def extract_ingredients_from_image(image_base64: str) -> list:
@@ -20,7 +21,7 @@ def extract_ingredients_from_image(image_base64: str) -> list:
     # Find text after "ingredients:" keyword (case insensitive)
     match = re.search(r'ingredients?\s*[:\-]?\s*(.*)', text, re.IGNORECASE | re.DOTALL)
     if not match:
-        return []
+        return [], text
     
     ingredients_text = match.group(1).strip()
     
@@ -45,4 +46,4 @@ def extract_ingredients_from_image(image_base64: str) -> list:
         if cleaned and len(cleaned) > 2:
             ingredients.append(cleaned)
             
-    return ingredients
+    return ingredients, text

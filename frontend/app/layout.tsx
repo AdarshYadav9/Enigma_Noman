@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={inter.className} suppressHydrationWarning>
         <nav className="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-100">
           <div className="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
             <Link href="/" className="font-bold text-xl text-gray-900 flex items-center gap-2">

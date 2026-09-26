@@ -17,6 +17,7 @@ export interface RiskResult {
   sodium_warning: string | null;
   safe_ingredients: string[];
   ingredients_found?: string[];
+  raw_text?: string;
 }
 
 export interface Dish {
