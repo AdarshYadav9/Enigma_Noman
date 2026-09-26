@@ -1,0 +1,22 @@
+{
+  "pav bhaji":     {"ingredients":["maida","butter","potato","salt","tomato","oil"],"sodium_mg":820,"carbs_g":65},
+  "dal makhani":   {"ingredients":["black lentil","cream","butter","salt","tomato"],"sodium_mg":680,"carbs_g":40},
+  "samosa":        {"ingredients":["maida","potato","refined oil","salt","spices"],"sodium_mg":420,"carbs_g":45},
+  "biryani":       {"ingredients":["white rice","oil","salt","spices","msg"],"sodium_mg":950,"carbs_g":72},
+  "chole bhature": {"ingredients":["maida","refined oil","salt","chickpea","soda"],"sodium_mg":760,"carbs_g":80},
+  "idli sambar":   {"ingredients":["rice","urad dal","salt","tamarind","vegetables"],"sodium_mg":380,"carbs_g":40},
+  "vada pav":      {"ingredients":["maida","potato","refined oil","salt","chutney"],"sodium_mg":520,"carbs_g":55},
+  "butter chicken":{"ingredients":["cream","butter","salt","chicken","tomato","spices"],"sodium_mg":890,"carbs_g":15},
+  "paneer tikka":  {"ingredients":["paneer","cream","salt","spices","oil","maida"],"sodium_mg":560,"carbs_g":10},
+  "masala dosa":   {"ingredients":["rice","urad dal","potato","oil","salt","spices"],"sodium_mg":490,"carbs_g":60},
+  "rajma chawal":  {"ingredients":["kidney beans","white rice","salt","oil","tomato"],"sodium_mg":610,"carbs_g":68},
+  "poha":          {"ingredients":["flattened rice","oil","salt","potato","peanut"],"sodium_mg":340,"carbs_g":52},
+  "aloo paratha":  {"ingredients":["wheat flour","potato","butter","salt","oil"],"sodium_mg":450,"carbs_g":58},
+  "bhel puri":     {"ingredients":["puffed rice","maida","salt","tamarind","potato"],"sodium_mg":480,"carbs_g":50},
+  "upma":          {"ingredients":["semolina","oil","salt","vegetables","mustard"],"sodium_mg":390,"carbs_g":45},
+  "pani puri":     {"ingredients":["maida","potato","salt","tamarind","spices"],"sodium_mg":440,"carbs_g":48},
+  "dhokla":        {"ingredients":["chickpea flour","salt","sugar","oil","soda"],"sodium_mg":320,"carbs_g":35},
+  "khichdi":       {"ingredients":["rice","moong dal","salt","ghee","turmeric"],"sodium_mg":290,"carbs_g":55},
+  "bread pakora":  {"ingredients":["maida","bread","potato","oil","salt"],"sodium_mg":510,"carbs_g":58},
+  "jalebi":        {"ingredients":["maida","sugar","refined oil","corn flour","soda"],"sodium_mg":80,"carbs_g":75}
+}

@@ -1,0 +1,38 @@
+{
+  "diabetes": {
+    "high": ["maida","corn syrup","maltodextrin","white rice flour",
+             "sugar","glucose syrup","dextrose","refined flour",
+             "starch","palm sugar"],
+    "moderate": ["potato","white rice","refined oil","bread"],
+    "sodium_safe_mg": 2000,
+    "carb_limit_g": 45,
+    "label": "Blood Sugar Risk"
+  },
+  "hypertension": {
+    "high": ["salt","sodium","msg","ajinomoto","baking soda",
+             "sodium benzoate","monosodium glutamate","pickle brine"],
+    "moderate": ["butter","cream","cheese","processed meat"],
+    "sodium_safe_mg": 1500,
+    "label": "Blood Pressure Risk"
+  },
+  "ckd": {
+    "high": ["salt","phosphate","potassium","high protein",
+             "sodium phosphate","potassium chloride","phosphoric acid"],
+    "moderate": ["tomato","potato","dairy","banana","orange"],
+    "sodium_safe_mg": 1000,
+    "label": "Kidney Risk"
+  },
+  "pcos": {
+    "high": ["maida","refined oil","trans fat","sugar",
+             "hydrogenated oil","palm oil","vanaspati"],
+    "moderate": ["white rice","cream","potato","corn flour"],
+    "sodium_safe_mg": 2000,
+    "label": "Hormonal Risk"
+  },
+  "allergy": {
+    "high": ["peanut","gluten","milk","egg","soy","wheat",
+             "tree nuts","shellfish","sesame","mustard"],
+    "moderate": [],
+    "label": "Allergy Risk"
+  }
+}
