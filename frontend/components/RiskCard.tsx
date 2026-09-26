@@ -1,7 +1,33 @@
 import { RiskResult } from '../types';
 import RiskBadge from './RiskBadge';
 import HiddenAlertBox from './HiddenAlertBox';
-import { AlertTriangle, CheckCircle2 } from 'lucide-react';
+import { AlertTriangle, CheckCircle2, FileText } from 'lucide-react';
+
+const renderHighlightedText = (text: string, flags: RiskResult['flags']) => {
+  if (!text) return null;
+  const flagWords = flags.map(f => f.ingredient.toLowerCase());
+  if (flagWords.length === 0) return <p className="whitespace-pre-wrap text-sm text-gray-700 bg-gray-50 p-4 rounded-xl border border-gray-200">{text}</p>;
+
+  const escapeRegExp = (str: string) => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const regex = new RegExp(`\\b(${flagWords.map(escapeRegExp).join('|')})\\b`, 'gi');
+  
+  const parts = text.split(regex);
+  return (
+    <p className="whitespace-pre-wrap text-sm text-gray-700 bg-gray-50 p-4 rounded-xl border border-gray-200 leading-relaxed">
+      {parts.map((part, i) => {
+        if (flagWords.includes(part.toLowerCase())) {
+          return <span key={i} className="bg-red-200 text-red-900 font-bold px-1.5 py-0.5 rounded shadow-sm relative group cursor-help">
+            {part}
+            <span className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 w-48 bg-gray-900 text-white text-xs p-2 rounded shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
+              This ingredient is flagged! See details below.
+            </span>
+          </span>;
+        }
+        return part;
+      })}
+    </p>
+  );
+};
 
 export default function RiskCard({ result, dishName }: { result: RiskResult, dishName: string }) {
   return (
@@ -13,6 +39,16 @@ export default function RiskCard({ result, dishName }: { result: RiskResult, dis
           {result.explanation}
         </p>
       </div>
+
+      {result.raw_text && (
+        <div className="px-6 md:px-8 pt-8 pb-2">
+          <h3 className="font-bold text-gray-800 text-lg mb-3 flex items-center gap-2">
+            <FileText className="text-gray-500" size={20} />
+            Extracted Text
+          </h3>
+          {renderHighlightedText(result.raw_text, result.flags)}
+        </div>
+      )}
 
       <div className="p-6 md:p-8 flex flex-col gap-6">
         {result.sodium_warning && (

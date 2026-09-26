@@ -78,12 +78,13 @@ def analyze_ingredients(req: IngredientsAnalyzeRequest):
 
 @app.post("/analyze/ocr")
 def analyze_ocr(req: OCRAnalyzeRequest):
-    extracted_ingredients = extract_ingredients_from_image(req.image_base64)
+    extracted_ingredients, raw_text = extract_ingredients_from_image(req.image_base64)
     result = analyze_risk(
         ingredients=extracted_ingredients,
         conditions=req.conditions
     )
     result["ingredients_found"] = extracted_ingredients
+    result["raw_text"] = raw_text
     return result
 
 class BarcodeAnalyzeRequest(BaseModel):
@@ -125,7 +126,7 @@ def analyze_barcode(req: BarcodeAnalyzeRequest):
 
 @app.post("/analyze/menu")
 def analyze_menu(req: MenuAnalyzeRequest):
-    extracted_text = extract_ingredients_from_image(req.image_base64)
+    _, extracted_text = extract_ingredients_from_image(req.image_base64)
     # Since extract_ingredients_from_image cleans and splits by comma,
     # let's just use the raw extracted text or similar, but wait, the prompt says:
     # "After OCR text extracted: -> Parse as DISH NAMES instead -> Match each dish name against indian_dishes.json"
