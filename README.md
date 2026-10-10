@@ -2,7 +2,6 @@
 
 An intelligent, multi-modal personalized dietary risk alert system designed to help individuals with chronic conditions (such as Hypertension, Diabetes, Chronic Kidney Disease, PCOS, and severe food allergies) make safe, informed nutritional choices in real time.
 
---
 
 ## 🎯 Problem Statement
 
