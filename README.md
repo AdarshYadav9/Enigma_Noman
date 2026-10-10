@@ -2,22 +2,11 @@
 
 An intelligent, multi-modal personalized dietary risk alert system designed to help individuals with chronic conditions (such as Hypertension, Diabetes, Chronic Kidney Disease, PCOS, and severe food allergies) make safe, informed nutritional choices in real time.
 
----
-
-## 👥 Team Information
-
-* **Team Name:** Team Noman
-* **Team Members:**
-  * **Adarsh Yadav**
-  * **Aman Prajapati**
-  * **Hritika Das**
-  * **Shivam Tiwari**
-
----
+--
 
 ## 🎯 Problem Statement
 
-**PS1: Personalized Dietary Risk Alert System**
+**Personalized Dietary Risk Alert System**
 
 Standard health and nutrition trackers rely on one-size-fits-all static calorie models, manual typing, and barcode-only databases. They fail to protect users with specific chronic conditions from critical dietary risks (such as dangerous sodium spikes for hypertension patients, hidden sugars for diabetics, or trace allergens). Furthermore, generic generative AI chatbots often hallucinate non-deterministic and potentially hazardous medical advice.
 
